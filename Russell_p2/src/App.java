@@ -22,8 +22,13 @@ public class App {
 
 	public static boolean moreInput() {
 		System.out.println("Would you like to enter a BMI, Y or N");
+		
+		//only breaks out on a return statement
 		while (true) {
+			//I'm using a String instead of a char because of how silly reading in chars are
 			String checkYesNo = sc.next();
+			
+			//checks if there is more input than there should be and if the input is valid
 			if (checkYesNo.length() != 1 || (!checkYesNo.equalsIgnoreCase("Y") && !checkYesNo.equalsIgnoreCase("N"))) {
 				System.out.println("Please input a Y or N");
 			} else {
@@ -32,35 +37,43 @@ public class App {
 		}
 	}
 
-	public static int getUserHeight() {
+	public static double getUserHeight() {
+		//only breaks out upon the return statement
 		while (true)
+			//the try block catches when the input is not an int
 			try {
+				//prompts the user
 				System.out.println("please enter the input height");
-				int inputHeight = sc.nextInt();
+				double inputHeight = sc.nextDouble();
 
+				//checks if the height is negative
 				if (inputHeight < 0)
-					System.out.println("Please enter a positive Integer");
+					System.out.println("Please enter a positive height");
 				else
 					return inputHeight;
 
 			} catch (Exception e) {
-				System.out.println("Please enter an Integer");
+				System.out.println("Please enter an actual height");
 			}
 	}
 
-	public static int getUserWeight() {
+	public static double getUserWeight() {
+		//only breaks out upon the return statement
 		while (true)
+			//catches when the input is not a numeric datatype
 			try {
+				//prompts the user
 				System.out.println("please enter the input weight");
-				int inputWeight = sc.nextInt();
+				double inputWeight = sc.nextDouble();
 
+				//checks if the weight is negative
 				if (inputWeight < 0) {
-					System.out.println("please enter a positive Integer");
+					System.out.println("please enter a positive weight");
 				} else
 					return inputWeight;
 
 			} catch (Exception e) {
-				System.out.println("Please enter an Integer");
+				System.out.println("Please enter an actual weight");
 			}
 	}
 	
@@ -76,6 +89,9 @@ public class App {
 			average += a.getBMI();
 		}
 		average /= bmiData.size();
+		
+		//rounds to the nearest hundredth
+		average = Math.round(average * 100) / 100.0;
 		
 		System.out.println("The average body mass index is " + average + ".");
 	}

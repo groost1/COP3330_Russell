@@ -21,6 +21,7 @@ public class BodyMassIndex {
 	}
 
 	public String getCategory() {
+		//works on a cascading system like a switch case but with nested if statements
 		if (bmi > 18.5) {
 			if (bmi > 24.9) {
 				if (bmi > 29.9) {
